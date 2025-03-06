@@ -156,8 +156,10 @@ class _OverflowListViewRowState<T extends Object>
               final event = widget.oEvents.events.elementAt(index);
               final width =
                   widget.eventColumnWith / widget.oEvents.events.length;
-              final topGap = event.start.minuteFrom(widget.oEvents.start) *
+              double topGap = event.start.minuteFrom(widget.oEvents.start) *
                   widget.heightUnit;
+
+              topGap = topGap.isNegative ? 0 : topGap;
 
               final tilePossibleHeight =
                   (event.durationInMins * widget.heightUnit);
